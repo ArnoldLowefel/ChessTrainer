@@ -146,7 +146,7 @@ def line_list(tree, move, line):
 		for i in find_all_moves_of_num_x(move, tree):
 			line_list(cut_tree(find_move(tree, i), move), move + 1, line + i + " ")
 	else:
-		drzewo.append(line)
+		drzewo.append(line.rstrip(" "))
 
 
 line_list(chess_tree, 1, "")
