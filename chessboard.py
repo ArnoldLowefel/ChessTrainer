@@ -3,7 +3,7 @@ import time
 import pgntofen
 import import_tree
 import display
-
+import random
 
 
 # fen = pgnConverter.getFullFen()
@@ -11,7 +11,7 @@ import display
 """Global Variables"""
 active_square = [True, True]
 pgnConverter = pgntofen.PgnToFen()
-move = 5
+move = 0
 
 def read_fen(fen_data):
     """get FEN data return 8x8 matrix [len = 64] with P,K,Q..."""
@@ -89,9 +89,20 @@ def click(event):
 
 fen = []
 
-pgn = import_tree.train(import_tree.chess_tree)
+import_tree.line_list(import_tree.chess_tree)
+tree = import_tree.drzewo
+# print(tree)
 
-for i in list(pgn.split(" ")):
+x = random.choices(tree)
+[x] = x
+print(x)
+for i in list(x.split(" ")):
+	# print(i)
+	if import_tree.RepresentsInt(i[0]):
+		if import_tree.RepresentsInt(i[1]):
+			i = i[3:]
+		else:
+			i = i[2:]
 	pgnConverter.move(str(i))
 	fen.append(pgnConverter.getFullFen())
 	# print(fen)
