@@ -141,18 +141,15 @@ def train(tree):
 
 
 drzewo = []
-def line_list(tree, move, line):
+def line_list(tree, move = 1, line = ""):
 	if find_all_moves_of_num_x(move, tree):
 		for i in find_all_moves_of_num_x(move, tree):
 			line_list(cut_tree(find_move(tree, i), move), move + 1, line + i + " ")
 	else:
-		drzewo.append(line.rstrip(" "))
+		drzewo.append(line.replace("\n", "").rstrip())
 
 
 line_list(chess_tree, 1, "")
-
-
-
 
 
 
